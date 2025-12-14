@@ -48,6 +48,6 @@ message ConfigurationSyncRequest {
   // UUID is the unique id to represent the signature of the latest configuration.
   // The agent usually uses its bootstrap configuration running in default, and this id could be empty when doing the 1st round sync.
   // The agent could/is recommended to cache the UUID from the last command, and put it as the next round UUID parameter,
-  // then the OAP only returns the empty Commands if no configuration change happenned.
+  // then the OAP only returns the empty Commands if no configuration change happened.
   string uuid = 2;
 }
