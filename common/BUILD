@@ -16,6 +16,7 @@
 #
 
 load("@com_google_protobuf//bazel:proto_library.bzl", "proto_library")
+load("@rules_buf//buf:defs.bzl", "buf_lint_test")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -27,4 +28,10 @@ proto_library(
         "Command.proto",
         "Common.proto",
     ],
+)
+
+buf_lint_test(
+    name = "common_protocol_proto_lint",
+    config = "//:buf.yaml",
+    targets = [":common_protocol_proto_lib"],
 )

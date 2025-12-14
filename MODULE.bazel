@@ -23,3 +23,11 @@ module(
 
 bazel_dep(name = "grpc", version = "1.74.1", repo_name = "com_github_grpc_grpc")
 bazel_dep(name = "protobuf", version = "32.0", repo_name = "com_google_protobuf")
+bazel_dep(name = "rules_buf", version = "0.5.2")
+
+# Setup buf toolchain
+buf = use_extension("@rules_buf//buf:extensions.bzl", "buf")
+buf.toolchains(version = "v1.47.2")
+use_repo(buf, "rules_buf_toolchains")
+
+register_toolchains("@rules_buf_toolchains//:all")

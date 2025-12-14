@@ -15,9 +15,31 @@
 # limitations under the License.
 #
 
-common --enable_bzlmod
-
-# Enable source code info for proto descriptors (required by buf)
-build --protocopt=--include_source_info
-
-try-import %workspace%/user.bazelrc
+version: v2
+modules:
+  - path: .
+lint:
+  use:
+    - STANDARD
+  except:
+    # Disable rules that conflict with existing protobuf naming conventions
+    # These can be enabled incrementally as the codebase is updated
+    - PACKAGE_DIRECTORY_MATCH
+    - FILE_LOWER_SNAKE_CASE
+    - FIELD_LOWER_SNAKE_CASE
+    - ENUM_VALUE_UPPER_SNAKE_CASE
+    - ENUM_VALUE_PREFIX
+    - ENUM_ZERO_VALUE_SUFFIX
+    - RPC_REQUEST_RESPONSE_UNIQUE
+    - RPC_REQUEST_STANDARD_NAME
+    - RPC_RESPONSE_STANDARD_NAME
+    - RPC_PASCAL_CASE
+  ignore:
+    # Ignore generated files if any
+    - bazel-*
+breaking:
+  use:
+    - FILE
+  ignore:
+    # Ignore generated files if any
+    - bazel-*

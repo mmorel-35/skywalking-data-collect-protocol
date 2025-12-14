@@ -15,9 +15,14 @@
 # limitations under the License.
 #
 
-common --enable_bzlmod
+load("@rules_buf//buf:defs.bzl", "buf_format")
 
-# Enable source code info for proto descriptors (required by buf)
-build --protocopt=--include_source_info
+exports_files(
+    ["buf.yaml"],
+    visibility = ["//visibility:public"],
+)
 
-try-import %workspace%/user.bazelrc
+# Buf format - run with: bazel run //:buf_format
+buf_format(
+    name = "buf_format",
+)
