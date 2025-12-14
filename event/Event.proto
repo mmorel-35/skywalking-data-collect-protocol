@@ -20,19 +20,18 @@ syntax = "proto3";
 
 package skywalking.v3;
 
-option java_multiple_files = true;
-option java_package = "org.apache.skywalking.apm.network.event.v3";
+import "common/Command.proto";
+
 option csharp_namespace = "SkyWalking.NetworkProtocol.V3";
 option go_package = "skywalking.apache.org/repo/goapi/collect/event/v3";
-
-import "common/Command.proto";
+option java_multiple_files = true;
+option java_package = "org.apache.skywalking.apm.network.event.v3";
 
 service EventService {
   // When reporting an event, you typically call the collect function twice, one for starting of the event and the other one for ending of the event, with the same UUID.
   // There are also cases where you have both start time and end time already, for example, when exporting events from a 3rd-party system,
   // the start time and end time are already known so that you can call the collect function only once.
-  rpc collect (stream Event) returns (Commands) {
-  }
+  rpc collect(stream Event) returns (Commands) {}
 }
 
 message Event {
@@ -65,7 +64,7 @@ message Event {
   // The end time (in milliseconds) of the event. , measured between the current time and midnight, January 1, 1970 UTC.
   // This field may be empty if the event has not stopped yet, otherwise it should be a valid timestamp after `startTime`.
   int64 endTime = 8;
-  
+
   // [Required] Since 9.0.0
   // Name of the layer to which the event belongs.
   string layer = 9;

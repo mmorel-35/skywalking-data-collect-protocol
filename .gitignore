@@ -2,4 +2,8 @@
 /bazel-*
 MODULE.bazel.lock
 
+# IDE
 .idea
+
+# Backup files
+*.bak

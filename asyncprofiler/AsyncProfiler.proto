@@ -19,18 +19,18 @@
 syntax = "proto3";
 package skywalking.v10;
 
-option java_multiple_files = true;
-option java_package = "org.apache.skywalking.apm.network.language.asyncprofiler.v10";
+import "common/Command.proto";
+
 option csharp_namespace = "SkyWalking.NetworkProtocol.V10";
 option go_package = "skywalking.apache.org/repo/goapi/collect/language/asyncprofiler/v10";
-
-import "common/Command.proto";
+option java_multiple_files = true;
+option java_package = "org.apache.skywalking.apm.network.language.asyncprofiler.v10";
 
 service AsyncProfilerTask {
   // collect sends JFR data to the OAP server
   rpc collect(stream AsyncProfilerData) returns (stream AsyncProfilerCollectionResponse);
   // getAsyncProfilerTaskCommands sends query to the OAP server for all AsyncProfiler tasks to be executed for the given Java Agent instance
-  rpc getAsyncProfilerTaskCommands (AsyncProfilerTaskCommandQuery) returns (skywalking.v3.Commands);
+  rpc getAsyncProfilerTaskCommands(AsyncProfilerTaskCommandQuery) returns (skywalking.v3.Commands);
 }
 
 message AsyncProfilerData {

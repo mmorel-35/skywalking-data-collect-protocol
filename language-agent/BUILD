@@ -18,6 +18,7 @@
 load("@com_github_grpc_grpc//bazel:cc_grpc_library.bzl", "cc_grpc_library")
 load("@com_google_protobuf//bazel:cc_proto_library.bzl", "cc_proto_library")
 load("@com_google_protobuf//bazel:proto_library.bzl", "proto_library")
+load("@rules_buf//buf:defs.bzl", "buf_lint_test")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -59,4 +60,16 @@ cc_grpc_library(
     generate_mocks = True,
     grpc_only = True,
     deps = [":configuration_discovery_service_cc_proto"],
+)
+
+buf_lint_test(
+    name = "tracing_protocol_proto_lint",
+    config = "//:buf.yaml",
+    targets = [":tracing_protocol_proto_lib"],
+)
+
+buf_lint_test(
+    name = "configuration_discovery_service_proto_lint",
+    config = "//:buf.yaml",
+    targets = [":configuration_discovery_service_proto_lib"],
 )
