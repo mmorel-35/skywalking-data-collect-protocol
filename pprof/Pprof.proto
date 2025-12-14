@@ -19,18 +19,18 @@
 syntax = "proto3";
 package skywalking.v10;
 
-option java_multiple_files = true;
-option java_package = "org.apache.skywalking.apm.network.pprof.v10";
+import "common/Command.proto";
+
 option csharp_namespace = "SkyWalking.NetworkProtocol.V10";
 option go_package = "skywalking.apache.org/repo/goapi/collect/pprof/v10";
-
-import "common/Command.proto";
+option java_multiple_files = true;
+option java_package = "org.apache.skywalking.apm.network.pprof.v10";
 
 service PprofTask {
   // collect pprof data to the OAP server.
-  rpc collect (stream PprofData) returns (stream PprofCollectionResponse);
+  rpc collect(stream PprofData) returns (stream PprofCollectionResponse);
   // getPprofTaskCommands sends query to the OAP server for all pprof tasks to be executed for the given Go Agent instance
-  rpc getPprofTaskCommands (PprofTaskCommandQuery) returns (skywalking.v3.Commands);
+  rpc getPprofTaskCommands(PprofTaskCommandQuery) returns (skywalking.v3.Commands);
 }
 
 message PprofData {

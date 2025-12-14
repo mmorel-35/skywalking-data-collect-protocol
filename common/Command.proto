@@ -20,12 +20,12 @@ syntax = "proto3";
 
 package skywalking.v3;
 
-option java_multiple_files = true;
-option java_package = "org.apache.skywalking.apm.network.common.v3";
+import "common/Common.proto";
+
 option csharp_namespace = "SkyWalking.NetworkProtocol.V3";
 option go_package = "skywalking.apache.org/repo/goapi/collect/common/v3";
-
-import "common/Common.proto";
+option java_multiple_files = true;
+option java_package = "org.apache.skywalking.apm.network.common.v3";
 
 // Command represents an protocol customized data when return.
 //
@@ -97,18 +97,18 @@ import "common/Common.proto";
 // Args:
 //     TaskId: String
 message Command {
-    // Use command name to distinguish different data type.
-    string command = 1;
-    // Data content in command.
-    // The value of content needs to be serialized as string for transmission.
-    //
-    // Basic data type: convert as string.
-    // The list of basic data: multiple data are split by ",".
-    // Complex data: serialize string through json.
-    repeated KeyStringValuePair args = 2;
+  // Use command name to distinguish different data type.
+  string command = 1;
+  // Data content in command.
+  // The value of content needs to be serialized as string for transmission.
+  //
+  // Basic data type: convert as string.
+  // The list of basic data: multiple data are split by ",".
+  // Complex data: serialize string through json.
+  repeated KeyStringValuePair args = 2;
 }
 
 // Transferring multiple Command in agent and OAP.
 message Commands {
-    repeated Command commands = 1;
+  repeated Command commands = 1;
 }

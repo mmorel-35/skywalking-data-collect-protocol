@@ -26,10 +26,23 @@ on:
 jobs:
   CI:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Check License Headers
         uses: apache/skywalking-eyes@6e387ca914675222f0df405660f88bc803c297bf
+      - name: Setup Bazelisk
+        uses: bazelbuild/setup-bazelisk@v3
+      - name: Build All Targets
+        run: bazel build //...
+      - name: Run Buf Lint Tests
+        run: bazel test //common:common_protocol_proto_lint //language-agent:tracing_protocol_proto_lint //language-agent:configuration_discovery_service_proto_lint
+      - name: Check Buf Format
+        run: |
+          bazel run //:buf_format -- -d
+          if [ $? -ne 0 ]; then
+            echo "Proto files are not properly formatted. Run 'bazel run //:buf_format' to fix."
+            exit 1
+          fi

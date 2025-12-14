@@ -20,42 +20,41 @@ syntax = "proto3";
 
 package skywalking.v3;
 
-option java_multiple_files = true;
-option java_package = "org.apache.skywalking.apm.network.language.agent.v3";
+import "common/Command.proto";
+import "common/Common.proto";
+
 option csharp_namespace = "SkyWalking.NetworkProtocol.V3";
 option go_package = "skywalking.apache.org/repo/goapi/collect/language/agent/v3";
-
-import "common/Common.proto";
-import "common/Command.proto";
+option java_multiple_files = true;
+option java_package = "org.apache.skywalking.apm.network.language.agent.v3";
 
 service CLRMetricReportService {
-    rpc collect (CLRMetricCollection) returns (Commands) {
-    }
+  rpc collect(CLRMetricCollection) returns (Commands) {}
 }
 
 message CLRMetricCollection {
-    repeated CLRMetric metrics = 1;
-    string service = 2;
-    string serviceInstance = 3;
+  repeated CLRMetric metrics = 1;
+  string service = 2;
+  string serviceInstance = 3;
 }
 
 message CLRMetric {
-    int64 time = 1;
-    CPU cpu = 2;
-    ClrGC gc = 3;
-    ClrThread thread = 4;
+  int64 time = 1;
+  CPU cpu = 2;
+  ClrGC gc = 3;
+  ClrThread thread = 4;
 }
 
 message ClrGC {
-    int64 Gen0CollectCount = 1;
-    int64 Gen1CollectCount = 2;
-    int64 Gen2CollectCount = 3;
-    int64 HeapMemory = 4;
+  int64 Gen0CollectCount = 1;
+  int64 Gen1CollectCount = 2;
+  int64 Gen2CollectCount = 3;
+  int64 HeapMemory = 4;
 }
 
 message ClrThread {
-    int32 AvailableCompletionPortThreads = 1;
-    int32 AvailableWorkerThreads = 2;
-    int32 MaxCompletionPortThreads = 3;
-    int32 MaxWorkerThreads = 4;
+  int32 AvailableCompletionPortThreads = 1;
+  int32 AvailableWorkerThreads = 2;
+  int32 MaxCompletionPortThreads = 3;
+  int32 MaxWorkerThreads = 4;
 }
