@@ -28,14 +28,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           submodules: true
       - name: Check License Headers
         uses: apache/skywalking-eyes@6e387ca914675222f0df405660f88bc803c297bf
       
       - name: Setup Bazelisk
-        uses: bazelbuild/setup-bazelisk@v2
+        uses: bazelbuild/setup-bazelisk@95c6bf8a2e0cd6baac9d71f9a0f2ec54e6e34136  # v2.0.1
       
       - name: Build All Targets
         run: bazel build //...
