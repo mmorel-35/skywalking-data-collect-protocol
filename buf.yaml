@@ -21,22 +21,182 @@ modules:
 lint:
   use:
     - STANDARD
-  except:
-    # Disable rules that conflict with existing protobuf naming conventions
-    # These can be enabled incrementally as the codebase is updated
-    - PACKAGE_DIRECTORY_MATCH
-    - FILE_LOWER_SNAKE_CASE
-    - FIELD_LOWER_SNAKE_CASE
-    - ENUM_VALUE_UPPER_SNAKE_CASE
-    - ENUM_VALUE_PREFIX
-    - ENUM_ZERO_VALUE_SUFFIX
-    - RPC_REQUEST_RESPONSE_UNIQUE
-    - RPC_REQUEST_STANDARD_NAME
-    - RPC_RESPONSE_STANDARD_NAME
-    - RPC_PASCAL_CASE
   ignore:
     # Ignore generated files if any
     - bazel-*
+  ignore_only:
+    ENUM_VALUE_PREFIX:
+      - asyncprofiler/AsyncProfiler.proto
+      - browser/BrowserPerf.proto
+      - browser/BrowserPerfCompat.proto
+      - common/Command.proto
+      - common/Common.proto
+      - ebpf/accesslog.proto
+      - ebpf/profiling/Continuous.proto
+      - ebpf/profiling/Process.proto
+      - ebpf/profiling/Profile.proto
+      - event/Event.proto
+      - language-agent/CLRMetric.proto
+      - language-agent/CLRMetricCompat.proto
+      - language-agent/ConfigurationDiscoveryService.proto
+      - language-agent/JVMMetric.proto
+      - language-agent/JVMMetricCompat.proto
+      - language-agent/Meter.proto
+      - language-agent/MeterCompat.proto
+      - language-agent/Tracing.proto
+      - language-agent/TracingCompat.proto
+      - logging/Logging.proto
+      - management/Management.proto
+      - management/ManagementCompat.proto
+      - pprof/Pprof.proto
+      - profile/Profile.proto
+      - profile/ProfileCompat.proto
+      - service-mesh-probe/service-mesh.proto
+    ENUM_VALUE_UPPER_SNAKE_CASE:
+      - asyncprofiler/AsyncProfiler.proto
+      - browser/BrowserPerf.proto
+      - browser/BrowserPerfCompat.proto
+      - common/Command.proto
+      - common/Common.proto
+      - ebpf/accesslog.proto
+      - ebpf/profiling/Continuous.proto
+      - ebpf/profiling/Process.proto
+      - ebpf/profiling/Profile.proto
+      - event/Event.proto
+      - language-agent/CLRMetric.proto
+      - language-agent/CLRMetricCompat.proto
+      - language-agent/ConfigurationDiscoveryService.proto
+      - language-agent/JVMMetric.proto
+      - language-agent/JVMMetricCompat.proto
+      - language-agent/Meter.proto
+      - language-agent/MeterCompat.proto
+      - language-agent/Tracing.proto
+      - language-agent/TracingCompat.proto
+      - logging/Logging.proto
+      - management/Management.proto
+      - management/ManagementCompat.proto
+      - pprof/Pprof.proto
+      - profile/Profile.proto
+      - profile/ProfileCompat.proto
+      - service-mesh-probe/service-mesh.proto
+    ENUM_ZERO_VALUE_SUFFIX:
+      - asyncprofiler/AsyncProfiler.proto
+      - browser/BrowserPerf.proto
+      - browser/BrowserPerfCompat.proto
+      - common/Command.proto
+      - common/Common.proto
+      - ebpf/accesslog.proto
+      - ebpf/profiling/Continuous.proto
+      - ebpf/profiling/Process.proto
+      - ebpf/profiling/Profile.proto
+      - event/Event.proto
+      - language-agent/CLRMetric.proto
+      - language-agent/CLRMetricCompat.proto
+      - language-agent/ConfigurationDiscoveryService.proto
+      - language-agent/JVMMetric.proto
+      - language-agent/JVMMetricCompat.proto
+      - language-agent/Meter.proto
+      - language-agent/MeterCompat.proto
+      - language-agent/Tracing.proto
+      - language-agent/TracingCompat.proto
+      - logging/Logging.proto
+      - management/Management.proto
+      - management/ManagementCompat.proto
+      - pprof/Pprof.proto
+      - profile/Profile.proto
+      - profile/ProfileCompat.proto
+      - service-mesh-probe/service-mesh.proto
+    FIELD_LOWER_SNAKE_CASE:
+      - asyncprofiler/AsyncProfiler.proto
+      - browser/BrowserPerf.proto
+      - browser/BrowserPerfCompat.proto
+      - common/Command.proto
+      - common/Common.proto
+      - ebpf/accesslog.proto
+      - ebpf/profiling/Continuous.proto
+      - ebpf/profiling/Process.proto
+      - ebpf/profiling/Profile.proto
+      - event/Event.proto
+      - language-agent/CLRMetric.proto
+      - language-agent/CLRMetricCompat.proto
+      - language-agent/ConfigurationDiscoveryService.proto
+      - language-agent/JVMMetric.proto
+      - language-agent/JVMMetricCompat.proto
+      - language-agent/Meter.proto
+      - language-agent/MeterCompat.proto
+      - language-agent/Tracing.proto
+      - language-agent/TracingCompat.proto
+      - logging/Logging.proto
+      - management/Management.proto
+      - management/ManagementCompat.proto
+      - pprof/Pprof.proto
+      - profile/Profile.proto
+      - profile/ProfileCompat.proto
+      - service-mesh-probe/service-mesh.proto
+    FILE_LOWER_SNAKE_CASE:
+      - asyncprofiler/AsyncProfiler.proto
+      - browser/BrowserPerf.proto
+      - browser/BrowserPerfCompat.proto
+      - common/Command.proto
+      - common/Common.proto
+      - language-agent/CLRMetric.proto
+      - language-agent/CLRMetricCompat.proto
+      - language-agent/ConfigurationDiscoveryService.proto
+      - language-agent/JVMMetric.proto
+      - language-agent/JVMMetricCompat.proto
+      - language-agent/Meter.proto
+      - language-agent/MeterCompat.proto
+      - language-agent/Tracing.proto
+      - language-agent/TracingCompat.proto
+      - logging/Logging.proto
+      - management/Management.proto
+      - management/ManagementCompat.proto
+      - pprof/Pprof.proto
+      - profile/Profile.proto
+      - profile/ProfileCompat.proto
+    PACKAGE_DIRECTORY_MATCH:
+      - asyncprofiler/AsyncProfiler.proto
+      - browser/BrowserPerf.proto
+      - browser/BrowserPerfCompat.proto
+      - common/Command.proto
+      - common/Common.proto
+      - ebpf/accesslog.proto
+      - ebpf/profiling/Continuous.proto
+      - ebpf/profiling/Process.proto
+      - ebpf/profiling/Profile.proto
+      - event/Event.proto
+      - language-agent/CLRMetric.proto
+      - language-agent/CLRMetricCompat.proto
+      - language-agent/ConfigurationDiscoveryService.proto
+      - language-agent/JVMMetric.proto
+      - language-agent/JVMMetricCompat.proto
+      - language-agent/Meter.proto
+      - language-agent/MeterCompat.proto
+      - language-agent/Tracing.proto
+      - language-agent/TracingCompat.proto
+      - logging/Logging.proto
+      - management/Management.proto
+      - management/ManagementCompat.proto
+      - pprof/Pprof.proto
+      - profile/Profile.proto
+      - profile/ProfileCompat.proto
+      - service-mesh-probe/service-mesh.proto
+    RPC_PASCAL_CASE:
+      - language-agent/ConfigurationDiscoveryService.proto
+      - language-agent/Tracing.proto
+      - language-agent/TracingCompat.proto
+    RPC_REQUEST_RESPONSE_UNIQUE:
+      - language-agent/ConfigurationDiscoveryService.proto
+      - language-agent/Tracing.proto
+      - language-agent/TracingCompat.proto
+    RPC_REQUEST_STANDARD_NAME:
+      - language-agent/ConfigurationDiscoveryService.proto
+      - language-agent/Tracing.proto
+      - language-agent/TracingCompat.proto
+    RPC_RESPONSE_STANDARD_NAME:
+      - language-agent/ConfigurationDiscoveryService.proto
+      - language-agent/Tracing.proto
+      - language-agent/TracingCompat.proto
 breaking:
   use:
     - FILE
