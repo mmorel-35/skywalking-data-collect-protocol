@@ -17,4 +17,8 @@
 
 common --enable_bzlmod
 
+# Use C++17 standard (required by abseil-cpp)
+build --cxxopt=-std=c++17
+build --host_cxxopt=-std=c++17
+
 try-import %workspace%/user.bazelrc
